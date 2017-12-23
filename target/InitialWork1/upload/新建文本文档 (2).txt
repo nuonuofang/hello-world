@@ -1,0 +1,45 @@
+///
+///链表的初始化（构造一个空表 ）
+///【算法思想】
+///（1）生成新结点作头结点，用头指针L指向头结点。
+///（2）头结点的指针域置空。
+
+Status InitList_L(LinkList &L){ 
+   L=new LNode;                    	
+   L->next=NULL;　　　　　
+   return OK; 
+} 
+
+顺序表的类型定义
+#define  MAXSIZE 100     //最大长度
+typedef  struct {  
+ElemType  *elem;  //指向数据元素的基地址  
+int  length;        //线性表的当前长度       
+ }SqList；
+
+线性表的重要基本操作
+1.  初始化
+2.  取值
+3.  查找
+4.  插入
+5.  删除
+
+
+初始化线性表L （参数用引用）
+status InitList_Sq(SqList &L){    //构造一个空的顺序表L    
+L.elem=new ElemType[MAXSIZE];   //为顺序表分配空间    
+if(!L.elem) exit(OVERFLOW);       //存储分配失败    
+L.length=0;			 //空表长度为0    
+return OK;
+}
+
+
+
+
+
+
+
+
+
+
+

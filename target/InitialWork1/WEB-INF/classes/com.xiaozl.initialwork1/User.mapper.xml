@@ -13,9 +13,36 @@
     <insert id="newUser">
         INSERT INTO t_user (user_name, password) VALUES(#{user.userName}, #{user.password})
     </insert>
-
+    <!-- 验证登录 -->
     <select id="countByUserNameAndPassword" resultType="int">
         SELECT count(1) FROM t_user
         WHERE user_name = #{userName} AND password = #{password}
     </select>
+    <!--增 -->
+    <insert id="insertUser">
+        INSERT INTO t_user (user_name, password) VALUES(#{user.userName}, #{user.password})
+    </insert>
+    <!-- 删 -->
+    <delete id="deleteUserById" parameterType="int">
+        DELETE FROM t_user WHERE id=#{id}
+    </delete>
+
+         <!-- 改 -->
+    <update id="updateUserById" parameterType="User">
+    UPDATE t_user SET user_name=#{user.userName},password=#{user.password} WHERE id=#{user.id}
+</update>
+
+    <!-- 查 -->
+    <select id="findUserById" parameterType="int"
+            resultMap="userResultMap">
+        SELECT id, user_name,password
+        FROM t_user
+        WHERE id=#{id}
+    </select>
+    <!-- 查所有 -->
+    <select id="findAll" resultType="User">
+        SELECT id, user_name AS userName ,password
+        FROM t_user
+    </select>
+
 </mapper>

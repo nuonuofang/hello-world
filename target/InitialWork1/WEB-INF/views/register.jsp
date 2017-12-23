@@ -12,7 +12,7 @@
     //注册失败提示
     var register_err = '<%=request.getAttribute("register_err") == null ? "" : request.getAttribute("register_err")%>'
 
-    if(register_err != null && register_err != '') {
+    if (register_err != null && register_err != '') {
         alert(register_err);
     }
 </script>
@@ -22,12 +22,13 @@
 
 </head>
 <body>
-
-<form action="${website}register" method="post">
-       用户名: <input type="text" name="userName" /> <br />
-      密码： <input type="password" name="password" /> <br />
-        <input type="submit" value="注册" />
-      <input type="reset" value="重置" />
+<center style="margin-top: 140px">
+    <form action="${website}register" method="post">
+        用户名: <input type="text" name="userName"/> <br/>
+        密码： <input type="password" name="password"/> <br/>
+        <input type="submit" value="注册"/>
+        <input type="reset" value="重置"/>
     </form>
+    <center/>
 </body>
 </html>

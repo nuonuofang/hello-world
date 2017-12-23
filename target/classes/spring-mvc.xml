@@ -11,6 +11,7 @@
     http://www.springframework.org/schema/context/spring-context-3.2.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+    <mvc:annotation-driven />
     <!-- 扫描文件（自动将service层注入） -->
     <!--自动扫描注解的Controller-->
     <context:component-scan base-package="com.xiaozl.initialwork1.web.controller"/>
@@ -30,10 +31,25 @@
 
     <!--文件上传-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置默认编码 -->
+        <property name="defaultEncoding" value="utf-8"></property>
         <!--最大上传大小(字节)-->
-        <property name="maxUploadSize" value="1048576" />
+        <property name="maxUploadSize" value="5048576" />
     </bean>
 
 
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/main"/>
+            <mvc:mapping path="/del/**"/>
+            <mvc:mapping path="/toUpdate/**"/>
+            <mvc:mapping path="/updateUser/*"/>
+            <bean class="com.xiaozl.initialwork1.interceptor.SecurityInterceptor"/>
+        </mvc:interceptor>
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/admin/**"/>-->
+            <!--<bean class="com.xiaozl.initialwork1.interceptor.SecurityInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+    </mvc:interceptors>
 </beans>

@@ -17,13 +17,13 @@
     <meta charset="utf-8">
     <title>Login</title>
 </head>
-<body>
-    <form action="${website}login" method="post">
+<body><center>
+    <form  align="center" action="${website}login" method="post">
         用户名: <input type="text" name="userName" /> <br />
         密码： <input type="password" name="password" /> <br />
         <input type="submit" value="登录" />
         <input type="reset" value="重置" />
-        <a href="${website}register">注册</a>
-    </form>
+        <a href="${website}register">没有账号？点此注册</a>
+    </form></center>
 </body>
 </html>

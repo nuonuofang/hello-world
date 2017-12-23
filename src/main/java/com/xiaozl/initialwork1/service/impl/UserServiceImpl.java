@@ -8,6 +8,9 @@ import com.xiaozl.initialwork1.entity.User;
 import com.xiaozl.initialwork1.mapper.UserMapper;
 import com.xiaozl.initialwork1.service.UserService;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author xiaozl
  * @date 2017/11/20
@@ -43,4 +46,66 @@ public class UserServiceImpl implements UserService {
             throw new Exception(e.getMessage());
         }
     }
+
+    /**
+     * 根据  id  删除 数据
+     */
+    public boolean deleteUserById(int id) {
+        try {
+            userMapper.deleteUserById(id);
+        }catch (Exception e){
+
+        }
+        return  false;
+    }
+
+    /**
+     * 查询User的全部数据
+     */
+    public List<User> findAll() {
+        List<User> findAllList = Collections.emptyList();
+        try {
+            findAllList = userMapper.findAll();
+        }
+        catch (Exception e ){
+        }
+        return findAllList;
+    }
+    /**
+     * 根据 id 查询 对应数据
+     */
+    public User findUserById(int id) throws Exception {
+        User user =userMapper.findUserById(id);
+        return user;
+    }
+    /**
+     * 新增数据
+     */
+    public void insertUser(User user) {
+        try {
+            userMapper.insertUser(user.getUserName(),user.getPassword()  )   ;
+        }catch (Exception e){
+        }
+
+    }
+    /**
+     * 根据 id 修改对应数据
+     */
+    public int update(User user) {
+        try{
+            return userMapper.updateUserById(user);
+        }catch (Exception e){
+            return 0;
+        }
+    }
+
+   @Override
+   public boolean delete(int id) throws Exception{
+        try {
+userMapper.deleteUserById(id);
+        }catch (Exception e){
+
+        }
+        return false;
+   }
 }
